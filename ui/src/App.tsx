@@ -330,7 +330,7 @@ export default function App() {
                         ...prev,
                         frontmatter: {
                           ...prev.frontmatter,
-                          status: event.target.value,
+                          status: event.target.value as TicketStatus,
                         },
                       }
                       : prev,
