@@ -5,7 +5,11 @@ import {
   moveTicket,
   updateTicket,
 } from "./api";
-import { TicketStatusValues } from "@ticket/shared/schema";
+import {
+  TicketStatus,
+  TicketStatusValues,
+  TicketFrontmatter,
+} from "@ticket/shared/schema";
 
 type TicketSummary = {
   id: string;
@@ -14,15 +18,18 @@ type TicketSummary = {
   area: string;
   epic: string;
   path: string;
+  created_at?: string;
   updated_at?: string;
+  intent?: string;
   issues?: string[];
 };
 
 type TicketDetail = {
   path: string;
-  frontmatter: Record<string, any>;
+  frontmatter: TicketFrontmatter;
   body: string;
   issues?: string[];
+  parse_error?: string;
 };
 
 const STATUS_COLUMNS = [
