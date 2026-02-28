@@ -1,3 +1,4 @@
+import "dotenv/config";
 import http from "http";
 import path from "path";
 import fs from "fs";
@@ -565,7 +566,7 @@ async function updateTicket(params: any) {
   }
 
   writeTicket(filePath, updatedFrontmatter, record.body);
-  regenerateIndex().catch(() => {});
+  regenerateIndex().catch(() => { });
 
   return { ok: true, path: filePath, issues };
 }
@@ -616,7 +617,7 @@ async function moveTicket(params: any) {
   if (destination !== filePath) {
     fs.unlinkSync(filePath);
   }
-  regenerateIndex().catch(() => {});
+  regenerateIndex().catch(() => { });
 
   return { ok: true, path: destination, issues };
 }
@@ -772,7 +773,7 @@ async function claimTicket(params: any) {
   if (destination !== filePath) {
     fs.unlinkSync(filePath);
   }
-  regenerateIndex().catch(() => {});
+  regenerateIndex().catch(() => { });
 
   return { ok: true, path: destination, issues };
 }
@@ -814,7 +815,7 @@ async function appendTicketWorklog(params: any) {
   }
 
   writeTicket(filePath, updatedFrontmatter, record.body);
-  regenerateIndex().catch(() => {});
+  regenerateIndex().catch(() => { });
   return { ok: true, path: filePath, issues };
 }
 
@@ -828,7 +829,7 @@ async function reconcileTickets(params: any) {
   const unresolved = reports.filter((report) => report.unresolved_issues.length > 0).length;
 
   if (applyFixes && changed > 0) {
-    regenerateIndex().catch(() => {});
+    regenerateIndex().catch(() => { });
   }
 
   return {
@@ -915,7 +916,7 @@ async function createTicket(params: any) {
 
   ensureDir(path.dirname(filePath));
   writeTicket(filePath, frontmatter, body);
-  regenerateIndex().catch(() => {});
+  regenerateIndex().catch(() => { });
   return { ok: true, path: filePath };
 }
 

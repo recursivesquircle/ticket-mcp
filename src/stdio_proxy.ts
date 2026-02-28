@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-
+import "dotenv/config";
 import * as http from "http";
 import * as readline from "readline";
 import * as fs from "fs";
